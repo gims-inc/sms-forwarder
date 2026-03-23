@@ -1,0 +1,44 @@
+# fix_dates.py  -- run once then delete
+import sqlite3
+from datetime import datetime
+
+formats = [
+    "%m/%d/%y, %I:%M %p",
+    "%m/%d/%y %I:%M %p",
+    "%m/%d/%y, %H:%M",
+    "%m/%d/%y %H:%M",
+]
+
+con = sqlite3.connect("sms.db")
+rows = con.execute("SELECT id, time FROM messages").fetchall()
+
+for row_id, raw in rows:
+    for fmt in formats:
+        try:
+            clean = datetime.strptime(raw.strip(), fmt).strftime("%Y-%m-%d %H:%M:%S")
+            con.execute("UPDATE messages SET time=? WHERE id=?", (clean, row_id))
+            print(f"#{row_id}: {raw!r} → {clean}")
+            break
+        except ValueError:
+            continue
+
+con.commit()
+con.close()
+print("Done.")
+
+
+
+# add this to the formats list in fix_dates.py
+try:
+    year = 2026
+    clean = datetime.strptime(f"{year}/{raw.strip()}", "%Y/%m/%d, %I:%M %p").strftime("%Y-%m-%d %H:%M:%S")
+    con.execute("UPDATE messages SET time=? WHERE id=?", (clean, row_id))
+    print(f"#{row_id}: {raw!r} → {clean}")
+    continue
+except ValueError:
+    pass
+
+
+
+
+python -m uvicorn main:app --host 192.168.100.13 --port 8007

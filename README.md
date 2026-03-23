@@ -95,3 +95,37 @@ You’re now forwarding SMS messages from your Android device to your own FastAP
 
 
 Want to expand this project? Add database support, or anything you want! — feel free to contribute or open issues! 
+
+
+
+
+**Step 3 — IIS setup:**
+
+1. Open IIS Manager
+2. Create a new site or application pointing to your project folder
+3. Set the app pool to **No Managed Code** (since Python handles everything)
+4. Give the app pool identity **read/write** permission on your project folder (so it can write the `.db` file)
+5. Make sure port 80/443 is bound to your site
+
+**Step 4 — Create the logs folder:**
+
+```
+myproject/
+├── main.py
+├── viewer.html
+├── web.config
+├── sms.db
+└── logs\        ← create this folder
+```
+
+---
+
+## Things to watch out for
+
+**Permissions** — the IIS app pool user (`IIS AppPool\YourAppName`) needs write access to the project folder for the SQLite db. Right-click the folder → Properties → Security → Add the app pool user.
+
+**Python path** — use the full absolute path to python.exe inside your virtualenv, e.g.:
+```
+C:\inetpub\wwwroot\smsapp\venv\Scripts\python.exe
+
+```
