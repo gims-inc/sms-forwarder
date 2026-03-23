@@ -1,4 +1,4 @@
-# 📡 SMS Forwarding Tutorial
+# 📡 SMS Forwarding customised for MPESA 
 
 This tutorial shows you how to forward incoming SMS messages from your Android device to your own API server — allowing you to store, process, or use them in any way you want.
 
@@ -28,7 +28,7 @@ You’ll need a server (a VPS or local server with public access) to receive the
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/9v2/sms-forwarder
+git clone https://github.com/gims-inc/sms-forwarder
 ```
 
 Go to the project directory
