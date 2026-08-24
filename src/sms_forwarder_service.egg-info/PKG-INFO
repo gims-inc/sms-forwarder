@@ -1,0 +1,20 @@
+Metadata-Version: 2.4
+Name: sms-forwarder-service
+Version: 0.1.0
+Summary: SMS forwarding service with monitoring, logging, and webhook support
+Requires-Python: >=3.11
+Requires-Dist: fastapi[standard]
+Requires-Dist: aiosqlite
+Requires-Dist: httpx
+Requires-Dist: pydantic-settings
+Requires-Dist: python-dotenv
+Requires-Dist: opentelemetry-api
+Requires-Dist: opentelemetry-sdk
+Requires-Dist: opentelemetry-instrumentation-fastapi
+Requires-Dist: opentelemetry-instrumentation-asyncio
+Requires-Dist: opentelemetry-instrumentation-sqlalchemy
+Requires-Dist: opentelemetry-exporter-otlp-proto-grpc
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-asyncio; extra == "dev"
+Requires-Dist: ruff; extra == "dev"

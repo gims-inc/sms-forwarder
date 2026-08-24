@@ -1,0 +1,16 @@
+fastapi[standard]
+aiosqlite
+httpx
+pydantic-settings
+python-dotenv
+opentelemetry-api
+opentelemetry-sdk
+opentelemetry-instrumentation-fastapi
+opentelemetry-instrumentation-asyncio
+opentelemetry-instrumentation-sqlalchemy
+opentelemetry-exporter-otlp-proto-grpc
+
+[dev]
+pytest
+pytest-asyncio
+ruff

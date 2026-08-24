@@ -1,0 +1,18 @@
+services:
+  sms-forwarder:
+    build:
+      context: .
+    container_name: sms-forwarder-service
+    ports:
+      - "8000:8000"
+    environment:
+      SMS_DB: /data/sms.db
+      SMS_WEBHOOK_URL: ${SMS_WEBHOOK_URL:-http://host.docker.internal:9000/webhook}
+      TELEMETRY_ENABLED: ${TELEMETRY_ENABLED:-false}
+      TELEMETRY_EXPORTER_ENDPOINT: ${TELEMETRY_EXPORTER_ENDPOINT:-}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    volumes:
+      - sms_data:/data
+
+volumes:
+  sms_data:
