@@ -7,9 +7,10 @@ from fastapi import APIRouter, Query
 from fastapi.responses import HTMLResponse
 from opentelemetry import trace
 
-from api.sms.service import SmsMessageService, parse_time
+from api.sms.service import SmsMessageService
 from api.sms.webhook import WebhookService
 
+from utils.time_helpers import TimeHelpers
 logger = logging.getLogger("sms.router")
 tracer = trace.get_tracer(__name__)
 
@@ -47,7 +48,7 @@ async def forward_sms(
             message=msg,
             sender=in_number,
             device=filter_name,
-            time=parse_time(time),
+            time=TimeHelpers.parse_time(time),
         )
         await webhook_service.send(payload)
 

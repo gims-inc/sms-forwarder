@@ -16,7 +16,7 @@ A small API service for receiving forwarded SMS entries, storing them in SQLite,
 ## Run locally
 
 ```bash
-cd sms-forwarder-service
+cd sms-forwarder
 mkdir -p data
 
 python3.11 -m venv .venv

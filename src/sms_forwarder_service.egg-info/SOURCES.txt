@@ -19,3 +19,5 @@ src/sms_forwarder_service.egg-info/dependency_links.txt
 src/sms_forwarder_service.egg-info/entry_points.txt
 src/sms_forwarder_service.egg-info/requires.txt
 src/sms_forwarder_service.egg-info/top_level.txt
+src/utils/__init__.py
+src/utils/utils.py

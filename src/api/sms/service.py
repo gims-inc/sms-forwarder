@@ -1,6 +1,7 @@
 import os
 import aiosqlite
-from utils.utils import parse_time
+from utils.time_helpers import TimeHelpers
+
 
 DB_PATH = os.getenv("SMS_DB", "sms.db")
 
@@ -35,7 +36,7 @@ class SmsMessageService:
         device: str,
         raw_time: str,
     ) -> dict[str, int | str]:
-        clean_time = parse_time(raw_time)
+        clean_time = TimeHelpers.parse_time(raw_time)
 
         async with aiosqlite.connect(self.db_path) as db:
             cursor = await db.execute(

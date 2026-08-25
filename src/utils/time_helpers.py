@@ -1,7 +1,7 @@
 from datetime import datetime
 
 
-class utils:
+class TimeHelpers:
     @staticmethod
     def parse_time(raw: str) -> str:
         raw = raw.strip()
