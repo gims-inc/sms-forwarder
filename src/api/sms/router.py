@@ -16,7 +16,7 @@ tracer = trace.get_tracer(__name__)
 
 router = APIRouter(prefix="", tags=["sms"])
 
-DB_PATH = os.getenv("SMS_DB", "sms.db")
+DB_PATH = os.getenv("SMS_DB", "data/sms.db")
 service = SmsMessageService(db_path=DB_PATH)
 webhook_service = WebhookService()
 
